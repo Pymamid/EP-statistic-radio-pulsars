@@ -32,14 +32,18 @@ df['Flux_log'] = [math.log(num,10) for num in [num for num in df['Flux'].values]
 df['Dist_log'] = [math.log(num,10) for num in [num for num in df['Distance'].values]]
 
 Flux_log = df['Flux_log'].values
-Fs=np.sort(Flux_log)
-Farray=np.arange(Fs[1],Fs[-1],0.1)
+Farray=np.sort(Flux_log)
 parray=np.empty(len(Farray))
 c=0
-for A in Farray:
-    X=Flux_log[(Flux_log>A)]
+while c>=0:
+    X=Farray[c:]
     K1,parray[c]=ks_2samp(Flux_log,X)
+    if(parray[c] < 10**(-15)):
+        break
     c=c+1
+
+Farray = Farray[:c]
+parray = parray[:c]
 
 # plotting fig 1
 plt.figure(figsize = (16,5))
