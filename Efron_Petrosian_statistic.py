@@ -65,6 +65,8 @@ ax2.set_xlabel(r'\textbf{log [$\mathbf{S_{th}}$ (erg $\mathbf{cm^{-2} s^{-1}}$)]
 
 plt.savefig("real_hist_pks.pdf", format="pdf", bbox_inches="tight")
 
+Farray = np.sort(df['Flux_log'])
+
 # Scatter plot of flux and distance (fig 2)
 
 plt.figure(figsize = (8,5))
