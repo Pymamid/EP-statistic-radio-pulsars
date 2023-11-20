@@ -35,7 +35,7 @@ Flux_log = df['Flux_log'].values
 Farray=np.sort(Flux_log)
 parray=np.empty(len(Farray))
 c=0
-while c>=0:
+while c>=0 and c<len(Farray):
     X=Farray[c:]
     K1,parray[c]=ks_2samp(Flux_log,X)
     if(parray[c] < 10**(-15)):
